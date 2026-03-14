@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>James Edward | Business Card Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0d0d0d;
+            --secondary: #1a1a1a;
+            --accent: #c9a962;
+            --accent-hover: #dfc07a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --card-bg: #141414;
+            --border: #2a2a2a;
+            --gold-gradient: linear-gradient(135deg, #c9a962 0%, #e8d5a3 50%, #c9a962 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(13, 13, 13, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 20px 0;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: 1px;
+        }
+
+        .logo-text span {
+            color: var(--accent);
+        }
+
+        nav {
+            display: flex;
+            gap: 8px;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            padding: 12px 24px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-primary);
+            background: var(--secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 40px 100px;
+            text-align: center;
+            background: var(--secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(201, 169, 98, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(201, 169, 98, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-divider {
+            width: 60px;
+            height: 2px;
+            background: var(--gold-gradient);
+            margin: 0 auto 32px;
+        }
+
+        /* Cards Section */
+        .cards-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .card-item {
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .card-item:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 60px rgba(201, 169, 98, 0.15);
+        }
+
+        .card-preview {
+            width: 100%;
+            height: 220px;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-preview img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            transition: transform 0.4s ease;
+        }
+
+        .card-item:hover .card-preview img {
+            transform: scale(1.05);
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card-item:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: var(--accent);
+            color: var(--primary);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: var(--accent-hover);
+            transform: scale(1.05);
+        }
+
+        .download-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .card-info {
+            padding: 24px;
+        }
+
+        .card-info h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .card-info p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--secondary);
+            padding: 100px 40px;
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .contact-section p {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .contact-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 20px 36px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .contact-email:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .contact-email svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        footer p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        footer span {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <span class="logo-text">James <span>Edward</span></span>
+            </a>
+            <nav>
+                <a href="#designs" class="active">Designs</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">Professional Business Card Designs</span>
+            <h1>James Edward</h1>
+            <p>Crafting elegant and memorable business card designs that leave a lasting impression. Click any design to download.</p>
+            <div class="hero-divider"></div>
+        </div>
+    </section>
+
+    <section class="cards-section" id="designs">
+        <div class="section-header">
+            <h2>Business Card Designs</h2>
+            <p>Select any design below to download high-quality business card images</p>
+        </div>
+        
+        <div class="cards-grid">
+            <!-- Image 1 -->
+            <div class="card-item" onclick="downloadImage('Firm Foundation Academy.jpg')">
+                <div class="card-preview">
+                    <img src="Firm Foundation Academy.jpg" alt="Business Card Design 1">
+                    <div class="card-overlay">
+                        <button class="download-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-8 4v-2h16v2H4z"/></svg>
+                            Download
+                        </button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <h3>Image 1</h3>
+                    <p>Business card design option 1</p>
+                </div>
+            </div>
+
+            <!-- Image 2 -->
+            <div class="card-item" onclick="downloadImage('Nexit Company Limited.jpg')">
+                <div class="card-preview">
+                    <img src="Nexit Company Limited.jpg" alt="Business Card Design 2">
+                    <div class="card-overlay">
+                        <button class="download-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-8 4v-2h16v2H4z"/></svg>
+                            Download
+                        </button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <h3>Image 2</h3>
+                    <p>Nexit Company Limited</p>
+                </div>
+            </div>
+
+            <!-- Image 3 -->
+            <div class="card-item" onclick="downloadImage('Pamela 2.jpg')">
+                <div class="card-preview">
+                    <img src="Pamela 2.jpg" alt="Business Card Design 3">
+                    <div class="card-overlay">
+                        <button class="download-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-8 4v-2h16v2H4z"/></svg>
+                            Download
+                        </button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <h3>Image 3</h3>
+                    <p>Pamela</p>
+                </div>
+            </div>
+
+            <!-- Image 4 -->
+            <div class="card-item" onclick="downloadImage('Young Stars Football Club.jpg')">
+                <div class="card-preview">
+                    <img src="Young Stars Football Club.jpg" alt="Business Card Design 4">
+                    <div class="card-overlay">
+                        <button class="download-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-8 4v-2h16v2H4z"/></svg>
+                            Download
+                        </button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <h3>Image 4</h3>
+                    <p>Young Stars Football Club</p>
+                </div>
+            </div>
+
+            <!-- Image 5 -->
+            <div class="card-item" onclick="downloadImage('Zina Logistics 2.jpg')">
+                <div class="card-preview">
+                    <img src="Zina Logistics 2.jpg" alt="Business Card Design 5">
+                    <div class="card-overlay">
+                        <button class="download-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-8 4v-2h16v2H4z"/></svg>
+                            Download
+                        </button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <h3>Image 5</h3>
+                    <p>Zina Logistics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="contact-content">
+            <h2>Get In Touch</h2>
+            <p>Interested in a custom business card design? Feel free to reach out.</p>
+            <a href="mailto:jamesedward8566@gmail.com" class="contact-email">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                jamesedward8566@gmail.com
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 <span>James Edward</span>. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function downloadImage(filename) {
+            // Create an anchor element
+            const link = document.createElement('a');
+            link.href = filename;
+            link.download = filename;
+            
+            // Force download
+            link.setAttribute('download', filename);
+            document.body.appendChild(link);
+            
+            // Trigger click
+            link.click();
+            
+            // Clean up
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>
